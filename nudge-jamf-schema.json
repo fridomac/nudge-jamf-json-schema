@@ -3,81 +3,69 @@
 	"title": "Nudge Preferences",
 	"description": "Managed preferences for Nudge",
 	"__version": "1.0",
+"properties": {
 
-  "properties": {
-
-    "optionalFeatures":{
-      "type": "array",
-      "items": {
-    		"attemptToFetchMajorUpgrade": {
-    			"title": "Attempt To Fetch Major Upgrade",
-    			"description": "When a major upgrade is required, Nudge will attempt to download it through the softwareupdate binary.",
-    			"type": "boolean",
-    			"default": "false"
-    		},
-    		"asyncronousSoftwareUpdate": {
-    			"title": "Asyncronous Software Update",
-    			"description": "When enabled Nudge will wait for Software Update to finish downloading (if any) updates before showing the UI",
-    			"type": "boolean",
-    			"default": "true"
-    		},
-    		"enforceMinorUpdates": {
-    			"title": "Enforce Minor Updates",
-    			"description": "When enabled, Nudge will enforce minor updates. This should likely never be disabled.",
-    			"type": "boolean",
-    			"default": "true"
-    		},
-      }
-    },
-    "osVersionRequirements":{
-      "type": "array",
-      "items": {
-    		"aboutUpdateURL": {
-    			"title": "About Update URL",
-    			"description": "A single URL, enabling the More Info button URL path.",
-    			"type": "string",
-    			"default": ""
-    		},
-    		"aboutUpdateURLs": {
-    			"title": "About Update URLs",
-    			"description": "A list of arrays, enabling localization of the More Info button URL path. Please see the aboutUpdateURLs wiki article for more information.",
-    			"type": "array",
-    			"items": {
-    				"type": "string",
-    				"title": "URL"
-    			}
-    		},
-    		"majorUpgradeAppPath": {
-    			"title": "Major Upgrade App Path",
-    			"description": "The app path for a major upgrade.",
-    			"type": "string",
-    			"default": ""
-    		},
-    		"requiredInstallationDate": {
-    			"title": "Required Installation Date",
-    			"description": "The required installation date for Nudge to enforce the required operating system version.\nNote: You must follow standard a date string as YYYY-MM-DDTHH:MM:SSZ - Example: 2021-01-31T00:00:00Z",
-    			"type": "string",
-    			"default": ""
-    		},
-    		"requiredMinimumOSVersion": {
-    			"title": "Required Minimum OS Version",
-    			"description": "The required minimum operating system version.\n\nNote: When passing versions such as 11.2.0 it will be normalized to 11.2. It is recommended to leave the trailing zero from the version number.",
-    			"type": "string",
-    			"default": ""
-    		},
-    		"targetedOSVersions": {
-    			"title": "Targeted OS Versions",
-    			"description": "The versions of macOS that require a security update. You can specify single version or multiple versions, but they must be within an array.",
-    			"type": "array",
-    			"items": {
-    				"type": "string"
-    			},
-    			"default": []
-    		},
-      }
-    },
-
-    "allowedDeferrals": {
+		"attemptToFetchMajorUpgrade": {
+			"title": "Attempt To Fetch Major Upgrade",
+			"description": "When a major upgrade is required, Nudge will attempt to download it through the softwareupdate binary.",
+			"type": "boolean",
+			"default": "false"
+		},
+		"asyncronousSoftwareUpdate": {
+			"title": "Asyncronous Software Update",
+			"description": "When enabled Nudge will wait for Software Update to finish downloading (if any) updates before showing the UI",
+			"type": "boolean",
+			"default": "true"
+		},
+		"enforceMinorUpdates": {
+			"title": "Enforce Minor Updates",
+			"description": "When enabled, Nudge will enforce minor updates. This should likely never be disabled.",
+			"type": "boolean",
+			"default": "true"
+		},
+		"aboutUpdateURL": {
+			"title": "About Update URL",
+			"description": "A single URL, enabling the More Info button URL path.",
+			"type": "string",
+			"default": ""
+		},
+		"aboutUpdateURLs": {
+			"title": "About Update URLs",
+			"description": "A list of arrays, enabling localization of the More Info button URL path. Please see the aboutUpdateURLs wiki article for more information.",
+			"type": "array",
+			"items": {
+				"type": "string",
+				"title": "URL"
+			}
+		},
+		"majorUpgradeAppPath": {
+			"title": "Major Upgrade App Path",
+			"description": "The app path for a major upgrade.",
+			"type": "string",
+			"default": ""
+		},
+		"requiredInstallationDate": {
+			"title": "Required Installation Date",
+			"description": "The required installation date for Nudge to enforce the required operating system version.\nNote: You must follow standard a date string as YYYY-MM-DDTHH:MM:SSZ - Example: 2021-01-31T00:00:00Z",
+			"type": "string",
+			"default": ""
+		},
+		"requiredMinimumOSVersion": {
+			"title": "Required Minimum OS Version",
+			"description": "The required minimum operating system version.\n\nNote: When passing versions such as 11.2.0 it will be normalized to 11.2. It is recommended to leave the trailing zero from the version number.",
+			"type": "string",
+			"default": ""
+		},
+		"targetedOSVersions": {
+			"title": "Targeted OS Versions",
+			"description": "The versions of macOS that require a security update. You can specify single version or multiple versions, but they must be within an array.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": []
+		},
+		"allowedDeferrals": {
 			"title": "Allowed Deferrals",
 			"description": "The amount of times a user can defer Nudge (change it from the currently active window) in the current user session before the aggressive user experience is enabled.",
 			"type": "integer",
