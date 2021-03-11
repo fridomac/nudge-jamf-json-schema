@@ -1,207 +1,222 @@
 {
-  "title": "Nudge Preferences",
-  "description": "Managed preferences for Nudge",
-  "__version": "1.0",
+  "title": "Nudge (com.github.macadmins.Nudge)",
+  "description": "Preference settings for Nudge",
+  "_version": "1.0",
   "properties": {
-    "attemptToFetchMajorUpgrade": {
-      "title": "Attempt To Fetch Major Upgrade",
-      "description": "When a major upgrade is required, Nudge will attempt to download it through the softwareupdate binary.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "asyncronousSoftwareUpdate": {
-      "title": "Asyncronous Software Update",
-      "description": "When enabled Nudge will wait for Software Update to finish downloading (if any) updates before showing the UI",
-      "type": "boolean",
-      "default": "true"
-    },
-    "enforceMinorUpdates": {
-      "title": "Enforce Minor Updates",
-      "description": "When enabled, Nudge will enforce minor updates. This should likely never be disabled.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "aboutUpdateURL": {
-      "title": "About Update URL",
-      "description": "A single URL, enabling the More Info button URL path.",
-      "type": "string",
-      "default": ""
-    },
-    "aboutUpdateURLs": {
-      "title": "About Update URLs",
-      "description": "A list of arrays, enabling localization of the More Info button URL path. Please see the aboutUpdateURLs wiki article for more information.",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "title": "URL"
-      }
-    },
-    "majorUpgradeAppPath": {
-      "title": "Major Upgrade App Path",
-      "description": "The app path for a major upgrade.",
-      "type": "string",
-      "default": ""
-    },
-    "requiredInstallationDate": {
-      "title": "Required Installation Date",
-      "description": "The required installation date for Nudge to enforce the required operating system version.\nNote: You must follow standard a date string as YYYY-MM-DDTHH:MM:SSZ - Example: 2021-01-31T00:00:00Z",
-      "type": "string",
-      "default": ""
-    },
-    "requiredMinimumOSVersion": {
-      "title": "Required Minimum OS Version",
-      "description": "The required minimum operating system version.\n\nNote: When passing versions such as 11.2.0 it will be normalized to 11.2. It is recommended to leave the trailing zero from the version number.",
-      "type": "string",
-      "default": ""
-    },
-    "targetedOSVersions": {
-      "title": "Targeted OS Versions",
-      "description": "The versions of macOS that require a security update. You can specify single version or multiple versions, but they must be within an array.",
-      "type": "array",
-      "items": {
-        "type": "string"
+      "osVersionRequirements": {
+          "title": "OS Version Requirements",
+          "description": "Sets the OS Version requirements",
+          "type": "array",
+          "items": {
+              "type": "object",
+              "title": "Update URLs",
+              "description": "A list of arrays, enabling localization of the More Info button URL path. Please see the aboutUpdateURLs wiki article for more information.",
+              "properties": {
+                  "aboutUpdateURLs": {
+                      "title": "About URLs for Updates",
+                      "type": "array",
+                      "items": {
+                          "title": "Language",
+                          "type": "object",
+                          "properties": {
+                              "_language": {
+                                  "title": "Language Code for Language",
+                                  "type": "string"
+                              },
+                              "aboutUpdateURL": {
+                                  "Title": "About Update URL for Language",
+                                  "type": "string"
+                              }
+                          }
+                      }
+                  }
+          }    
+          }
       },
-      "default": []
-    },
-    "allowedDeferrals": {
-      "title": "Allowed Deferrals",
-      "description": "The amount of times a user can defer Nudge (change it from the currently active window) in the current user session before the aggressive user experience is enabled.",
-      "type": "integer",
-      "default": "1000000"
-    },
-    "allowedDeferralsUntilForcedSecondaryQuitButton": {
-      "title": "Allowed Deferrals Until Forced Secondary Quit Button",
-      "description": "The amount of times a user can defer Nudge (change it from the currently active window) in the current user session before the both quit buttons need to be actioned.\n\nNote: The deferral count is only tied to the active Nudge session. If a user closes out of Nudge and the LaunchAgent re-triggers, the deferral count will re-start.",
-      "type": "integer",
-      "default": "14"
-    },
-    "approachingRefreshCycle": {
-      "title": "Approaching Refresh Cycle",
-      "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is directly tied to its partner key approachingWindowTime to know when to trigger this timer.",
-      "type": "integer",
-      "default": "6000"
-    },
-    "approachingWindowTime": {
-      "title": "Approaching Window Time ",
-      "description": "The amount of time in hours Nudge will use to determine that the requiredInstallationDate is approaching.",
-      "type": "integer",
-      "default": "72"
-    },
-    "elapsedRefreshCycle": {
-      "title": "Elapsed Refresh Cycle",
-      "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is triggered once the requiredInstallationDate has expired.",
-      "type": "integer",
-      "default": "300"
-    },
-    "imminentRefeshCycle": {
-      "title": "Imminent Refesh Cycle",
-      "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is directly tied to its partner key imminentWindowTime to know when to trigger this timer.",
-      "type": "integer",
-      "default": "600"
-    },
-    "imminentWindowTime": {
-      "title": "Imminent Window Time",
-      "description": "The amount of time in hours Nudge will use to determine that the requiredInstallationDate is imminent",
-      "type": "integer",
-      "default": "24"
-    },
-    "initialRefreshCycle": {
-      "title": "Initial Refresh Cycle",
-      "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.",
-      "type": "integer",
-      "default": "18000"
-    },
-    "maxRandomDelayInSeconds": {
-      "title": "Max Random Delay In Seconds",
-      "description": "The maximum amount of delay Nudge will utilize before launching the UI. This is useful if you do not want your users to all receive the Nudge prompt at the exact time of the LaunchAgent.",
-      "type": "integer",
-      "default": "1200"
-    },
-    "noTimers": {
-      "title": "No Timers",
-      "description": "This will disable all functionality related to the userExperience preference domain.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "nudgeRefreshCycle": {
-      "title": "Nudge Refresh Cycle",
-      "description": "The amount of time in seconds Nudge will use as its core timer to refresh all the core code paths.\n\nNote: While you can lower this setting, it could make Nudge too aggressive. Be mindful of decreasing this value.",
-      "type": "integer",
-      "default": "60"
-    },
-    "randomDelay": {
-      "title": "Random Delay",
-      "description": "Enables an initial delay Nudge before launching the UI. This is useful if you do not want your users to all receive the Nudge prompt at the exact time of the LaunchAgent.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "fallbackLanguage": {
-      "title": "Fallback Language",
-      "description": "The language to revert to if no localizations are available for the device's current language.",
-      "type": "string",
-      "default": "en"
-    },
-    "forceFallbackLanguage": {
-      "title": "Force Fallback Language",
-      "description": "Force the custom localizations to the value of fallbackLanguage.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "forceScreenShotIcon": {
-      "title": "Force ScreenShot Icon",
-      "description": "Force the built-in ScreenShot icon to render in the UI if a ScreenShot path is not passed.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "iconDarkPath": {
-      "title": "Icon Dark Path",
-      "description": "A path to a local jpg, png, icns that contains the icon for dark mode. This will replace the Apple logo on the left side of Nudge.",
-      "type": "string",
-      "default": ""
-    },
-    "iconLightPath": {
-      "title": "Icon Light Path",
-      "description": "A path to a local jpg, png, icns that contains the icon for light mode. This will replace the Apple logo on the left side of Nudge.",
-      "type": "string",
-      "default": ""
-    },
-    "screenShotDarkPath": {
-      "title": "ScreenShot Dark Path",
-      "description": "A path to a local jpg, png, icns that contains the screen shot for dark mode. This will replace the Big Sur logo on the lower right side of Nudge.",
-      "type": "string",
-      "default": ""
-    },
-    "screenShotLightPath": {
-      "title": "ScreenShot Light Path",
-      "description": "A path to a local jpg, png, icns that contains the screen shot for light mode. This will replace the Big Sur logo on the lower right side of Nudge.",
-      "type": "string",
-      "default": ""
-    },
-    "simpleMode": {
-      "title": "Simple Mode",
-      "description": "Enables Nudge to launch in the simplified user experience.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "singleQuitButton": {
-      "title": "Single Quit Button",
-      "description": "Only display one quit button regardless of proximity to the due date.",
-      "type": "boolean",
-      "default": "false"
-    },
-    "updateElements": {
-      "title": "Update Elements",
-      "description": "A list of arrays, enabling further customization to the Nudge UI. Please see the updateElements wiki article for more information.",
-      "type": "array",
-      "items": {
+      "majorUpgradeAppPath": {
+        "title": "Major Upgrade App Path",
+        "description": "The app path for a major upgrade.",
         "type": "string",
-        "title": "Elements"
+        "default": ""
       },
-      "default": []
-    },
-    "required": [
-      "requiredInstallationDate",
-      "requiredMinimumOSVersion"
-    ]
+      "requiredInstallationDate": {
+          "title": "Required Installation Date",
+          "description": "The required installation date for Nudge to enforce the required operating system version.\nNote: You must follow standard a date string as YYYY-MM-DDTHH:MM:SSZ - Example: 2021-01-31T00:00:00Z",
+          "type": "string",
+          "default": ""
+      },
+      "requiredMinimumOSVersion": {
+          "title": "Required Minimum OS Version",
+          "description": "The required minimum operating system version.\n\nNote: When passing versions such as 11.2.0 it will be normalized to 11.2. It is recommended to leave the trailing zero from the version number.",
+          "type": "string",
+          "default": ""
+        },
+      "targetedOSVersions": {
+          "title": "Targeted OS Versions",
+          "description": "The versions of macOS that require a security update. You can specify single version or multiple versions, but they must be within an array.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "attemptToFetchMajorUpgrade": {
+          "title": "Attempt To Fetch Major Upgrade",
+          "description": "When a major upgrade is required, Nudge will attempt to download it through the softwareupdate binary.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "asyncronousSoftwareUpdate": {
+          "title": "Asyncronous Software Update",
+          "description": "When enabled Nudge will wait for Software Update to finish downloading (if any) updates before showing the UI",
+          "type": "boolean",
+          "default": "true"
+        },
+        "enforceMinorUpdates": {
+          "title": "Enforce Minor Updates",
+          "description": "When enabled, Nudge will enforce minor updates. This should likely never be disabled.",
+          "type": "boolean",
+          "default": "true"
+        },
+        "allowedDeferrals": {
+          "title": "Allowed Deferrals",
+          "description": "The amount of times a user can defer Nudge (change it from the currently active window) in the current user session before the aggressive user experience is enabled.",
+          "type": "integer",
+          "default": "1000000"
+        },
+        "allowedDeferralsUntilForcedSecondaryQuitButton": {
+          "title": "Allowed Deferrals Until Forced Secondary Quit Button",
+          "description": "The amount of times a user can defer Nudge (change it from the currently active window) in the current user session before the both quit buttons need to be actioned.\n\nNote: The deferral count is only tied to the active Nudge session. If a user closes out of Nudge and the LaunchAgent re-triggers, the deferral count will re-start.",
+          "type": "integer",
+          "default": "14"
+        },
+        "approachingRefreshCycle": {
+          "title": "Approaching Refresh Cycle",
+          "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is directly tied to its partner key approachingWindowTime to know when to trigger this timer.",
+          "type": "integer",
+          "default": "6000"
+        },
+        "approachingWindowTime": {
+          "title": "Approaching Window Time ",
+          "description": "The amount of time in hours Nudge will use to determine that the requiredInstallationDate is approaching.",
+          "type": "integer",
+          "default": "72"
+        },
+        "elapsedRefreshCycle": {
+          "title": "Elapsed Refresh Cycle",
+          "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is triggered once the requiredInstallationDate has expired.",
+          "type": "integer",
+          "default": "300"
+        },
+        "imminentRefeshCycle": {
+          "title": "Imminent Refesh Cycle",
+          "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.\n\nThis key is directly tied to its partner key imminentWindowTime to know when to trigger this timer.",
+          "type": "integer",
+          "default": "600"
+        },
+        "imminentWindowTime": {
+          "title": "Imminent Window Time",
+          "description": "The amount of time in hours Nudge will use to determine that the requiredInstallationDate is imminent",
+          "type": "integer",
+          "default": "24"
+        },
+        "initialRefreshCycle": {
+          "title": "Initial Refresh Cycle",
+          "description": "The amount of time in seconds Nudge will use as a timer to refresh the user interface if it is not the currently active window.",
+          "type": "integer",
+          "default": "18000"
+        },
+        "maxRandomDelayInSeconds": {
+          "title": "Max Random Delay In Seconds",
+          "description": "The maximum amount of delay Nudge will utilize before launching the UI. This is useful if you do not want your users to all receive the Nudge prompt at the exact time of the LaunchAgent.",
+          "type": "integer",
+          "default": "1200"
+        },
+        "noTimers": {
+          "title": "No Timers",
+          "description": "This will disable all functionality related to the userExperience preference domain.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "nudgeRefreshCycle": {
+          "title": "Nudge Refresh Cycle",
+          "description": "The amount of time in seconds Nudge will use as its core timer to refresh all the core code paths.\n\nNote: While you can lower this setting, it could make Nudge too aggressive. Be mindful of decreasing this value.",
+          "type": "integer",
+          "default": "60"
+        },
+        "randomDelay": {
+          "title": "Random Delay",
+          "description": "Enables an initial delay Nudge before launching the UI. This is useful if you do not want your users to all receive the Nudge prompt at the exact time of the LaunchAgent.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "fallbackLanguage": {
+          "title": "Fallback Language",
+          "description": "The language to revert to if no localizations are available for the device's current language.",
+          "type": "string",
+          "default": "en"
+        },
+        "forceFallbackLanguage": {
+          "title": "Force Fallback Language",
+          "description": "Force the custom localizations to the value of fallbackLanguage.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "forceScreenShotIcon": {
+          "title": "Force ScreenShot Icon",
+          "description": "Force the built-in ScreenShot icon to render in the UI if a ScreenShot path is not passed.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "iconDarkPath": {
+          "title": "Icon Dark Path",
+          "description": "A path to a local jpg, png, icns that contains the icon for dark mode. This will replace the Apple logo on the left side of Nudge.",
+          "type": "string",
+          "default": ""
+        },
+        "iconLightPath": {
+          "title": "Icon Light Path",
+          "description": "A path to a local jpg, png, icns that contains the icon for light mode. This will replace the Apple logo on the left side of Nudge.",
+          "type": "string",
+          "default": ""
+        },
+        "screenShotDarkPath": {
+          "title": "ScreenShot Dark Path",
+          "description": "A path to a local jpg, png, icns that contains the screen shot for dark mode. This will replace the Big Sur logo on the lower right side of Nudge.",
+          "type": "string",
+          "default": ""
+        },
+        "screenShotLightPath": {
+          "title": "ScreenShot Light Path",
+          "description": "A path to a local jpg, png, icns that contains the screen shot for light mode. This will replace the Big Sur logo on the lower right side of Nudge.",
+          "type": "string",
+          "default": ""
+        },
+        "simpleMode": {
+          "title": "Simple Mode",
+          "description": "Enables Nudge to launch in the simplified user experience.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "singleQuitButton": {
+          "title": "Single Quit Button",
+          "description": "Only display one quit button regardless of proximity to the due date.",
+          "type": "boolean",
+          "default": "false"
+        },
+        "updateElements": {
+          "title": "Update Elements",
+          "description": "A list of arrays, enabling further customization to the Nudge UI. Please see the updateElements wiki article for more information.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "Elements"
+          },
+          "default": []
+        },
+        "required": [
+          "requiredInstallationDate",
+          "requiredMinimumOSVersion"
+        ]
   }
 }
