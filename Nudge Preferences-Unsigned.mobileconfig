@@ -45,27 +45,62 @@
                             <dict>
                                 <key>mcx_preference_settings</key>
                                 <dict>
-                                    <key>asyncronousSoftwareUpdate</key>
-                                    <true/>
-                                    <key>attemptToFetchMajorUpgrade</key>
-                                    <true/>
-                                    <key>enforceMinorUpdates</key>
-                                    <true/>
-                                    <key>majorUpgradeAppPath</key>
-                                    <string>/Applications/Install macOS Big Sur.app</string>
-                                    <key>requiredInstallationDate</key>
-                                    <string>2021-01-31T00:00:00Z</string>
-                                    <key>requiredMinimumOSVersion</key>
-                                    <string>11.2.3</string>
-                                    <key>osVersionRequirements</key>
-                                    <array/>
-                                    <key>targetedOSVersions</key>
+                                    <key>optional Features</key>
                                     <array>
-                                        <string>11.0.1</string>
-                                        <string>11.1</string>
-                                        <string>11.2</string>
-                                        <string>11.2.1</string>
-                                        <string>11.2.2</string>
+                                        <dict>
+                                            <key>asyncronousSoftwareUpdate</key>
+                                            <true/>
+                                            <key>attemptToFetchMajorUpgrade</key>
+                                            <true/>
+                                            <key>enforceMinorUpdates</key>
+                                            <true/>
+                                        </dict>
+                                    </array>
+                                    <key>osVersionRequirements</key>
+                                    <array>
+                                        <dict>
+                                            <key>majorUpgradeAppPath</key>
+                                            <string>/Applications/Install macOS Big Sur.app</string>
+                                            <key>requiredInstallationDate</key>
+                                            <string>2021-03-14T00:00:00Z</string>
+                                            <key>requiredMinimumOSVersion</key>
+                                            <string>11.2.3</string>
+                                            <key>aboutUpdateURLs</key>
+                                            <array>
+                                                <dict>
+                                                    <key>_language</key>
+                                                    <string>en</string>
+                                                    <key>aboutUpdateURL</key>
+                                                    <string>https://support.apple.com/en-us/HT211896#macos1121</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>_language</key>
+                                                    <string>es</string>
+                                                    <key>aboutUpdateURL</key>
+                                                    <string>https://support.apple.com/es-es/HT211896</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>_language</key>
+                                                    <string>de</string>
+                                                    <key>aboutUpdateURL</key>
+                                                    <string>https://support.apple.com/de-de/HT211896</string>
+                                                </dict>
+                                                <dict>
+                                                    <key>_language</key>
+                                                    <string>fr</string>
+                                                    <key>aboutUpdateURL</key>
+                                                    <string>https://support.apple.com/fr-fr/HT211896</string>
+                                                </dict>
+                                            </array>
+                                            <key>targetedOSVersions</key>
+                                            <array>
+                                                <string>11.0.1</string>
+                                                <string>11.1</string>
+                                                <string>11.2</string>
+                                                <string>11.2.1</string>
+                                                <string>11.2.2</string>
+                                            </array>
+                                        </dict>
                                     </array>
                                     <key>userExperience</key>
                                     <array>
@@ -108,11 +143,11 @@
                                             <key>iconDarkPath</key>
                                             <string>/Library/Branding/green_512px.png</string>
                                             <key>iconLightPath</key>
-                                            <string>/Library/Branding/green.png</string>
+                                            <string>/Library/Branding/green_512px.png</string>
                                             <key>screenShotDarkPath</key>
-                                            <string>/Library/Branding/support_logo.png</string>
+                                            <string>/Library/Branding/green_1024px.png</string>
                                             <key>screenShotLightPath</key>
-                                            <string>/Library/Branding/support_logo.png</string>
+                                            <string>/Library/Branding/green_1024px.png</string>
                                             <key>simpleMode</key>
                                             <false/>
                                             <key>singleQuitButton</key>
