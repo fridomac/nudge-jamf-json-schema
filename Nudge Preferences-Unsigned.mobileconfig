@@ -6,7 +6,7 @@
         <key>PayloadType</key>
         <string>Configuration</string>
         <key>PayloadOrganization</key>
-        <string>ACME Co</string>
+        <string>ACME Co.</string>
         <key>PayloadIdentifier</key>
         <string>11C2DA86-E9BC-40E3-805A-7BA72C2E433C</string>
         <key>PayloadDisplayName</key>
@@ -45,7 +45,7 @@
                             <dict>
                                 <key>mcx_preference_settings</key>
                                 <dict>
-                                    <key>optional Features</key>
+                                    <key>optionalFeatures</key>
                                     <array>
                                         <dict>
                                             <key>asyncronousSoftwareUpdate</key>
@@ -64,7 +64,7 @@
                                             <key>requiredInstallationDate</key>
                                             <string>2021-03-14T00:00:00Z</string>
                                             <key>requiredMinimumOSVersion</key>
-                                            <string>11.2.3</string>
+                                            <string>11.3</string>
                                             <key>aboutUpdateURLs</key>
                                             <array>
                                                 <dict>
@@ -99,6 +99,7 @@
                                                 <string>11.2</string>
                                                 <string>11.2.1</string>
                                                 <string>11.2.2</string>
+                                                <string>11.2.3</string>
                                             </array>
                                         </dict>
                                     </array>

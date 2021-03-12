@@ -60,7 +60,7 @@
                 }
             }
         },
-        "optional Features": {
+        "optionalFeatures": {
             "type": "array",
             "items": {
                 "type": "object",
